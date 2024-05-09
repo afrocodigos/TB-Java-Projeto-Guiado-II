@@ -1,6 +1,5 @@
 package funcionariosStarlabs;
 
-
 public interface FuncionarioInterface {
     String getNome();
     void setNome(String nome);

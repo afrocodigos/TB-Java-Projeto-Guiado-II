@@ -1,22 +1,22 @@
 package funcionariosStarlabs;
 import java.util.TreeSet;
 
-public class ArvoreDeFuncionarios {
+public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
 
-    private TreeSet<FuncionarioBase> funcionarios;
+    private TreeSet<T> funcionarios;
 
     public ArvoreDeFuncionarios() {
         funcionarios = new TreeSet<>((f1, f2) -> f1.getNome().compareTo(f2.getNome()));
     }
 
-    public void adicionar(FuncionarioBase funcionario) {
+    public void adicionar(T funcionario) {
         funcionarios.add(funcionario);
         System.out.println("Funcionário adicionado com sucesso!");
     }
 
-    public FuncionarioBase buscar(String nome) {
+    public T buscar(String nome) {
         
-        for (FuncionarioBase funcionarioBase : funcionarios) {
+        for (T funcionarioBase : funcionarios) {
             if (funcionarioBase.getNome().equals(nome)) {
                 return funcionarioBase; // retorno o funcionário encontraro
             }
@@ -26,7 +26,7 @@ public class ArvoreDeFuncionarios {
     }
 
     public void remover(String nome) {
-        FuncionarioBase funcionarioParaRemover = buscar(nome);
+        T funcionarioParaRemover = buscar(nome);
         if (funcionarioParaRemover != null) {
             funcionarios.remove(funcionarioParaRemover);
             System.out.println("Funcionário " + nome + " removido com sucesso!");
@@ -37,13 +37,13 @@ public class ArvoreDeFuncionarios {
 
     public void mostrarTodos() {
         System.out.println("\n=== Todos os Funcionário ===");
-        for (FuncionarioBase funcionarioBase : funcionarios) {
+        for (T funcionarioBase : funcionarios) {
             System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
         }
     }
 
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
-        FuncionarioBase funcionarioParaAtualizar = buscar(nome);
+        T funcionarioParaAtualizar = buscar(nome);
         if (funcionarioParaAtualizar != null) {
             funcionarioParaAtualizar.setSalario(novoSalario);
             funcionarioParaAtualizar.setCargo(novoCargo);
