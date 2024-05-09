@@ -1,4 +1,6 @@
-package funcionariosStarlabs;
+package data;
+import model.FuncionarioBase;
+
 import java.util.TreeSet;
 
 public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
