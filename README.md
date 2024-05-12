@@ -77,7 +77,3 @@ Contribuições são sempre bem-vindas!
 - [Júlio César](https://www.linkedin.com/in/jc-brito96/)
 
 
-## Melhorias
-
-Que melhorias você fez no seu código? Ex: refatorações, melhorias de performance, acessibilidade, etc
-
