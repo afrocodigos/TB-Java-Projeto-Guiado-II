@@ -1,4 +1,5 @@
 package Information;
+import java.nio.file.Paths;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -12,8 +13,9 @@ public class FeedbackUsuario {
 
     static {
         try {
-            // Configura o FileHandler para direcionar os logs para um arquivo de texto na pasta InformationLogs
-            FileHandler fileHandler = new FileHandler("./Information/feedback.log", true);
+            // Configura o FileHandler para direcionar os logs para um arquivo de texto na pasta Information
+            String logFilePath = Paths.get("./InformationFeedback").toString();
+            FileHandler fileHandler = new FileHandler(logFilePath, true);
             LOGGER.addHandler(fileHandler);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Erro ao configurar o FileHandler", e);
