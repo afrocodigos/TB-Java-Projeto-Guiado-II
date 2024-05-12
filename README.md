@@ -22,7 +22,17 @@ Este projeto tinha como objetivo a construção de um sistema de gerenciamento d
 - Mostrar todos os colaboradores
 - Atualizar dados de um colaborador
 - Logs de verificação
+  
+## Melhorias
 
+- Reorganização do código
+- Adição de mais colaboradores
+- Implementação de Logs
+- Validação de entrada
+- Tratamento de Exceções
+- Persistência de Dados
+- Feedback de Usuário
+  
 ## Estrutura do Projeto
 
 O projeto esta organizado em pacotes:
