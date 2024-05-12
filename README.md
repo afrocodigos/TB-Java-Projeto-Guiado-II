@@ -25,3 +25,8 @@ O projeto incorpora as seguintes regras de negócio:
 4. O sistema deve guardar a data e hora da atualização dos funcionários
 
 5. O sistema deve permitir uma listagem de todos os funcionários cadastrados e também separados por departamento
+
+6. O sistema deve permitir o cadastro de Consultores e sua forma de remuneração seja por pagamento e não salário
+
+<img src="/ProjetoGuiado2-II.png">
+
