@@ -3,6 +3,8 @@ import model.FuncionarioBase;
 import java.util.TreeSet;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.io.IOException;
+import java.util.logging.FileHandler;
 
 
 public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
@@ -14,7 +16,17 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         funcionarios = new TreeSet<>((f1,  f2) -> f1.getNome().compareTo(f2.getNome()));
     }
 
+
     private static final Logger LOGGER = Logger.getLogger(ArvoreDeFuncionarios.class.getName());
+
+    static {
+        try {
+            FileHandler fileHandler = new FileHandler("./InformationLogs/InformationLogs.txt/funcionarios.log", true);
+            LOGGER.addHandler(fileHandler);
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "Erro ao configurar o FileHandler", e);
+        }
+    }
 
 
     public void adicionar(T funcionario) {
