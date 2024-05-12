@@ -40,6 +40,7 @@ public class ArvoreDeConsultores<T extends ConsultorBase> {
         for (T consultoresBase : consultores) {
             System.out.println(consultoresBase.getNome() + " - " + consultoresBase.getCargo() + " - " + consultoresBase.getSalario());
         }
+        System.out.println("\n============================");
     }
 
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {

@@ -42,6 +42,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         for (T funcionarioBase : funcionarios) {
             System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
         }
+        System.out.println("\n============================");
     }
 
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
