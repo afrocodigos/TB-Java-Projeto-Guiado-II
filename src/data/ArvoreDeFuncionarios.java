@@ -52,7 +52,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     public void mostrarTodos() {
         System.out.println("\n=== Todos os Funcionário ===");
         for (T funcionarioBase : funcionarios) {
-            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
+            System.out.println(funcionarioBase.getId() + "-" + funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
         }
     }
 
