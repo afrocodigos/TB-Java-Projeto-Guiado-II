@@ -1,7 +1,5 @@
 package model;
 
-import funcionariosStarlabs.FuncionarioBase;
-
 public class VPDeEngenharia extends FuncionarioBase {
     
     public VPDeEngenharia(String nome, String Cargo, double salario, String cpf) {

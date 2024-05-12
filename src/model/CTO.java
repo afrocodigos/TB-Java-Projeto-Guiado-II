@@ -1,7 +1,5 @@
 package model;
 
-import funcionariosStarlabs.FuncionarioBase;
-
 public class CTO extends FuncionarioBase {
 
     public CTO(String nome, String cargo, double salario, String cpf) {

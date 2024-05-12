@@ -1,7 +1,6 @@
 package data;
 
-import funcionariosStarlabs.ArvoreDeFuncionarios;
-import funcionariosStarlabs.VPDeEngenharia;
+import model.VPDeEngenharia;
 
 public class ArvoreVPDeEngenharia extends ArvoreDeFuncionarios<VPDeEngenharia> {
     
