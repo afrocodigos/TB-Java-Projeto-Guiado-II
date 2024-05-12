@@ -16,12 +16,12 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
             funcionarios.add(funcionario);
             System.out.println("Funcionário adicionado com sucesso!");
         } else {
-            System.out.println("Já existe um funcionário com o mesmo nome e ID na nossa base de dados. ");
+            System.out.println("Já existe um funcionário com o mesmo nome e cpf na nossa base de dados. ");
         }
     }
     private boolean existeFuncionario (T funcionario){
         for (T f: funcionarios){
-            if (f.getNome().equals(funcionario.getNome()) && f.getId().equals(funcionario.getId())){
+            if (f.getNome().equals(funcionario.getNome()) && f.getCpf().equals(funcionario.getCpf())){
                 return true;
             }
         }
