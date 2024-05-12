@@ -8,7 +8,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     private TreeSet<T> funcionarios;
 
     public ArvoreDeFuncionarios() {
-        funcionarios = new TreeSet<>((f1, f2) -> f1.getNome().compareTo(f2.getNome()));
+        funcionarios = new TreeSet<>((f1,  f2) -> f1.getNome().compareTo(f2.getNome()));
     }
 
     public void adicionar(T funcionario) {
@@ -22,10 +22,10 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     private boolean existeFuncionario (T funcionario){
         for (T f: funcionarios){
             if (f.getNome().equals(funcionario.getNome()) && f.getId().equals(funcionario.getId())){
-                return true;;
+                return true;
             }
         }
-        return false;;
+        return false;
     }
 
     public T buscar(String nome) {

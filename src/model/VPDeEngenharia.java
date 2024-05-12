@@ -7,10 +7,12 @@ public class VPDeEngenharia extends FuncionarioBase {
     }
 
     public void criar() {
+
         System.out.println("VP de Engenharia criado com sucesso!");
     }
 
     public void ler() {
+
         System.out.println("Nome " + nome + ", Cargo: " + cargo + ", Salário: R$" + salario);
     }
 

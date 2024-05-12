@@ -12,7 +12,7 @@ public abstract class FuncionarioBase implements FuncionarioInterface {
     protected String cpf;
 
     public FuncionarioBase(String nome, String cargo, double salario, String cpf) {
-        this.id = UUID.randomUUID();;
+        this.id = UUID.randomUUID();
         this.nome = nome;
         this.cargo = cargo;
         this.salario = salario;
