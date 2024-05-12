@@ -21,7 +21,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
 
     static {
         try {
-            FileHandler fileHandler = new FileHandler("./InformationLogs/InformationLogs.txt/funcionarios.log", true);
+            FileHandler fileHandler = new FileHandler("./InformationLogs", true);
             LOGGER.addHandler(fileHandler);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Erro ao configurar o FileHandler", e);
