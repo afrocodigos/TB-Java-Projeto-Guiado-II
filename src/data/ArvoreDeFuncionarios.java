@@ -1,4 +1,5 @@
 package data;
+import interf4ce.ArvoreInterface;
 import model.FuncionarioBase;
 import java.util.TreeSet;
 import java.util.logging.Logger;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.util.logging.FileHandler;
 
 
-public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
+public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreInterface<T> {
 
 
     private TreeSet<T> funcionarios;
@@ -29,6 +30,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     }
 
 
+    @Override
     public void adicionar(T funcionario) {
         LOGGER.setLevel(Level.INFO);
         if (!existeFuncionario(funcionario)) {
@@ -41,15 +43,8 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
             System.out.println("Já existe um funcionário com o mesmo nome e cpf na nossa base de dados. ");
         }
     }
-    private boolean existeFuncionario (T funcionario){
-        for (T f: funcionarios){
-            if (f.getNome().equals(funcionario.getNome()) && f.getCpf().equals(funcionario.getCpf())){
-                return true;
-            }
-        }
-        return false;
-    }
 
+    @Override
     public T buscar(String nome) {
         LOGGER.setLevel(Level.INFO);
         for (T funcionarioBase : funcionarios) {
@@ -63,6 +58,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         return null;
     }
 
+    @Override
     public void remover(String nome) {
         LOGGER.setLevel(Level.INFO);
         T funcionarioParaRemover = buscar(nome);
@@ -77,6 +73,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         }
     }
 
+    @Override
     public void mostrarTodos() {
         LOGGER.setLevel(Level.INFO);
         LOGGER.info("Listagem de todos os funcionários:");
@@ -86,6 +83,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         }
     }
 
+    @Override
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
         LOGGER.setLevel(Level.INFO);
         T funcionarioParaAtualizar = buscar(nome);
