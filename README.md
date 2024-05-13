@@ -22,7 +22,17 @@ Este projeto tinha como objetivo a construção de um sistema de gerenciamento d
 - Mostrar todos os colaboradores
 - Atualizar dados de um colaborador
 - Logs de verificação
+  
+## Melhorias
 
+- Reorganização do código
+- Adição de mais colaboradores
+- Implementação de Logs
+- Validação de entrada
+- Tratamento de Exceções
+- Persistência de Dados
+- Feedback de Usuário
+  
 ## Estrutura do Projeto
 
 O projeto esta organizado em pacotes:
@@ -66,8 +76,4 @@ Contribuições são sempre bem-vindas!
 - [Luã Moura](https://www.linkedin.com/in/lhamcode/)
 - [Júlio César](https://www.linkedin.com/in/jc-brito96/)
 
-
-## Melhorias
-
-Que melhorias você fez no seu código? Ex: refatorações, melhorias de performance, acessibilidade, etc
 
