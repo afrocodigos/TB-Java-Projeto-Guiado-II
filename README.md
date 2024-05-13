@@ -26,7 +26,9 @@ O projeto incorpora as seguintes regras de negócio:
 
 5. O sistema deve permitir uma listagem de todos os funcionários cadastrados e também separados por departamento
 
-6. O sistema deve permitir o cadastro de Consultores e sua forma de remuneração seja por pagamento e não salário
+6. O sistema deve permitir o cadastro de Consultores e sua forma de contração seja por projeto e não departamento
 
 <img src="/ProjetoGuiado2-II.png">
 
+## Próximos passos
+[ ] Adicionar Departamento e Projeto respectivamente na listagem de Funcionários e Consultores 
