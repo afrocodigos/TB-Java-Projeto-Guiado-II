@@ -1,7 +1,9 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.controllers;
+
+import funcionariosStarlabs.FuncionarioBase;
 
 public class CTO extends FuncionarioBase {
-
+    
     public CTO(String nome, String cargo, double salario, String cpf) {
         super(nome, cargo, salario, cpf);
     }
