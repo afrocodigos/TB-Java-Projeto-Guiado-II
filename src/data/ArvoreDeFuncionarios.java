@@ -45,6 +45,11 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
     }
 
     @Override
+    public boolean existeFuncionario(T funcionario) {
+        return false;
+    }
+
+    @Override
     public T buscar(String nome) {
         LOGGER.setLevel(Level.INFO);
         for (T funcionarioBase : funcionarios) {
