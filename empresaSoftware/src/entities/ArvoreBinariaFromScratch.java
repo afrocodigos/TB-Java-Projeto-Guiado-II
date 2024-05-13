@@ -39,4 +39,34 @@ public class ArvoreBinariaFromScratch {
     public FuncionarioBase buscarFuncionario(String nomeFuncionario){
         return buscarRecursivo(root, nomeFuncionario);
     }
+
+    private NodeFuncionario removerRecursivo(NodeFuncionario nodeFuncionario, String nomeFuncionario){
+        if (nodeFuncionario == null){
+            return null;
+        }
+        if (nomeFuncionario.compareTo(nodeFuncionario.funcionario.getNomeFuncionario()) < 0){
+            nodeFuncionario.leftChild = removerRecursivo(nodeFuncionario.leftChild, nomeFuncionario);
+        }
+        else if (nomeFuncionario.compareTo(nodeFuncionario.funcionario.getNomeFuncionario()) > 0){
+            nodeFuncionario.rightChild = removerRecursivo(nodeFuncionario.rightChild, nomeFuncionario);
+        }
+        else {
+            if (nodeFuncionario.leftChild == null){
+                return nodeFuncionario.rightChild;
+            }
+            else if(nodeFuncionario.rightChild == null){
+                return nodeFuncionario.leftChild;
+            }
+
+            nodeFuncionario.funcionario = achaMenorFuncionario(nodeFuncionario.rightChild);
+            nodeFuncionario.rightChild = removerRecursivo(nodeFuncionario.rightChild, nodeFuncionario.funcionario.getNomeFuncionario())
+        }
+
+        return nodeFuncionario;
+    }
+
+    public void removerFuncionario(String nomeFuncionario){
+        root = removerRecursivo(root, nomeFuncionario);
+    }
+
 }
