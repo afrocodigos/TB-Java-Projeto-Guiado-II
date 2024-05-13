@@ -82,4 +82,19 @@ public class ArvoreBinariaFromScratch {
 
         return menorFuncionario;
     }
+
+    public void mostrarDadosOrdenados(){
+        mostrarDadosOrdenadosRecursivo(root);
+    }
+
+    private void mostrarDadosOrdenadosRecursivo(NodeFuncionario nodeFuncionario){
+        if (nodeFuncionario != null){
+            mostrarDadosOrdenadosRecursivo(nodeFuncionario.leftChild);
+            mostrarDadosOrdenadosRecursivo(nodeFuncionario.rightChild);
+            System.out.println(nodeFuncionario.funcionario.getNomeFuncionario() + " - " + nodeFuncionario.funcionario.getCargoFuncionario());
+        }
+        else {
+            System.out.println("Árvore vazia");
+        }
+    }
 }
