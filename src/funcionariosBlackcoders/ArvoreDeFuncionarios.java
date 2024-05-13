@@ -13,7 +13,6 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
 
     public void adicionar(T funcionario) {
         funcionarios.add(funcionario);
-        System.out.println("Funcionário adicionado com sucesso!");
     }
 
     public T buscar(String nome) {
@@ -38,11 +37,11 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     }
 
     public void mostrarTodos() {
-        System.out.println("\n=== Todos os Funcionário ===");
+        System.out.println("==== Lista Funcionários ====");
         for (T funcionarioBase : funcionarios) {
             System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
         }
-        System.out.println("\n============================");
+        System.out.println("============================\n");
     }
 
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
@@ -50,7 +49,6 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         if (funcionarioParaAtualizar != null) {
             funcionarioParaAtualizar.setSalario(novoSalario);
             funcionarioParaAtualizar.setCargo(novoCargo);
-            System.out.println("Dados da pessoa funcionária atulizados com sucesso!");
         } else {
             System.out.println("Pessoa não encontrada em nossa base!");
         }

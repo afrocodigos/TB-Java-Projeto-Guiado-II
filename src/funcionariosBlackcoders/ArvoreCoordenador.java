@@ -4,6 +4,7 @@ public class ArvoreCoordenador extends ArvoreDeFuncionarios<Coordenador> {
     @Override
     public void adicionar(Coordenador funcionario) {
         super.adicionar(funcionario);
+        System.out.println("Coordenador adicionado com sucesso!");
     }
 
     @Override

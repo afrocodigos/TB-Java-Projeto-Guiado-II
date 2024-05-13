@@ -3,6 +3,8 @@ package funcionariosBlackcoders;
 public class Main {
     public static void main(String[] args) {
 
+        System.out.println("Cadastrando funcionários\n");
+
         // Adicionando os executivos
         CEO funcionario = new CEO("Hugo", "CEO", 5000, "41643459856", "Executivo");
         CTO funcionario2 = new CTO("Gabriela", "CTO", 5000, "41648859856", "Executivo");
@@ -14,6 +16,7 @@ public class Main {
         Analista funcionario7 = new Analista("Gabriel", "Analista", 3000, "48845543349", "Desenvolvimento");
 
         // Criando uma árvore para todos os funcionários cadastrados
+        System.out.println("Adicionando Funcionários na árvore total\n");
         ArvoreDeFuncionarios arvoreTotal = new ArvoreDeFuncionarios<>();
         arvoreTotal.adicionar(funcionario);
         arvoreTotal.adicionar(funcionario2);
@@ -24,6 +27,7 @@ public class Main {
         arvoreTotal.mostrarTodos();
 
         // Criando árvores de armazenamento - Filtragem por cargo
+        System.out.println("Criando árvores especificas para filtragem dos funcionários\n");
         ArvoreCEO arvoreCEO = new ArvoreCEO();
         ArvoreCTO arvoreCTO = new ArvoreCTO();
         ArvoreCoordenador arvoreCoordenador = new ArvoreCoordenador();
@@ -31,6 +35,7 @@ public class Main {
         ArvoreAnalista arvoreAnalista = new ArvoreAnalista();
 
         // Adicionando executivos em suas respectivas árvores
+        System.out.println("Adicionando Cargo em sua respectiva árvore\n");
         arvoreCEO.adicionar(funcionario);
         arvoreCTO.adicionar(funcionario2);
         arvoreCoordenador.adicionar(funcionario3);
@@ -39,6 +44,9 @@ public class Main {
         arvoreAnalista.adicionar(funcionario7);
 
         // Filtragem dos Analistas de Desenvolvimento
+        System.out.println("\nListagem dos Analistas de desenvolvimento");
+        arvoreAnalista.mostrarTodos();
+        arvoreAnalista.atualizarDados("Gustavo", 3200, "Analista Pleno");
         arvoreAnalista.mostrarTodos();
 
         // Adicionando Consultor
@@ -46,9 +54,14 @@ public class Main {
         Consultor funcionario8 = new Consultor("Betto", "Consultor", 2000, "41645869875", "Financeiro BlackCoders");
 
         // Criando uma árvore para todos os Consultores cadastrados
+        System.out.println("Adicionando Consultores\n");
         ArvoreDeConsultores arvoreDeConsultores = new ArvoreDeConsultores<>();
         arvoreDeConsultores.adicionar(funcionario6);
         arvoreDeConsultores.adicionar(funcionario8);
+        arvoreDeConsultores.mostrarTodos();
+
+        System.out.println("Removendo Consultores\n");
+        arvoreDeConsultores.remover("Betto");
         arvoreDeConsultores.mostrarTodos();
     }
 }

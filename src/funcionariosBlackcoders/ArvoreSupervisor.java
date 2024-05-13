@@ -4,6 +4,7 @@ public class ArvoreSupervisor extends ArvoreDeFuncionarios<Supervisor>{
     @Override
     public void adicionar(Supervisor funcionario) {
         super.adicionar(funcionario);
+        System.out.println("Supervisor adicionado com sucesso!");
     }
 
     @Override
