@@ -16,6 +16,7 @@ public class ArvoreBinariaFromScratch {
         else if (funcionario.getNomeFuncionario().compareTo(nodeFuncionario.getNomeFuncionario()) > 0){
             nodeFuncionario.rightChild = inserirRecursivo(nodeFuncionario.rightChild, funcionario);
         }
+
         return nodeFuncionario;
     }
 
@@ -33,6 +34,7 @@ public class ArvoreBinariaFromScratch {
         else if (nomeFuncionario.compareTo(nodeFuncionario.funcionario.getNomeFuncionario()) > 0){
             return buscarRecursivo(nodeFuncionario.rightChild, nomeFuncionario);
         }
+
         return null;
     }
 
@@ -59,7 +61,7 @@ public class ArvoreBinariaFromScratch {
             }
 
             nodeFuncionario.funcionario = achaMenorFuncionario(nodeFuncionario.rightChild);
-            nodeFuncionario.rightChild = removerRecursivo(nodeFuncionario.rightChild, nodeFuncionario.funcionario.getNomeFuncionario())
+            nodeFuncionario.rightChild = removerRecursivo(nodeFuncionario.rightChild, nodeFuncionario.funcionario.getNomeFuncionario());
         }
 
         return nodeFuncionario;
@@ -69,4 +71,15 @@ public class ArvoreBinariaFromScratch {
         root = removerRecursivo(root, nomeFuncionario);
     }
 
+    private FuncionarioBase achaMenorFuncionario(NodeFuncionario nodeFuncionario){
+        FuncionarioBase menorFuncionario = nodeFuncionario.funcionario;
+
+        while (nodeFuncionario.leftChild != null) {
+            menorFuncionario = nodeFuncionario.leftChild.funcionario;
+            nodeFuncionario = nodeFuncionario.leftChild;
+
+        }
+
+        return menorFuncionario;
+    }
 }
