@@ -18,7 +18,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         
         for (T funcionarioBase : funcionarios) {
             if (funcionarioBase.getNome().equals(nome)) {
-                return funcionarioBase; // retorno o funcionário encontraro
+                return funcionarioBase; // retorno o funcionário encontrado
             }
         }
         System.out.println("Funcionário não existe na nossa base de dados");

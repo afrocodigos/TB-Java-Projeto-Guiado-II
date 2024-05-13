@@ -1,15 +1,15 @@
 package funcionariosStarlabs;
 
 public class ArvoreFuncionarios {
-    private FuncionarioNode root;
+    private FuncionarioBaseNode root;
 
     public ArvoreFuncionarios() {
         root = null;
     }
 
-    private FuncionarioNode inserirRecursivo(FuncionarioNode node, FuncionarioBase funcionario) {
+    private FuncionarioBaseNode inserirRecursivo(FuncionarioBaseNode node, FuncionarioBase funcionario) {
         if (node == null) {
-            return new FuncionarioNode(funcionario);
+            return new FuncionarioBaseNode(funcionario);
         }
 
         if (funcionario.getNome().compareTo(node.funcionario.getNome()) < 0) {
@@ -25,7 +25,7 @@ public class ArvoreFuncionarios {
         root = inserirRecursivo(root, funcionario);
     }
 
-    private FuncionarioBase buscarRecursivo(FuncionarioNode node, String nome) {
+    private FuncionarioBase buscarRecursivo(FuncionarioBaseNode node, String nome) {
         
         if (node == null || node.funcionario.getNome().equals(nome)) {
             return node == null ? null : node.funcionario;
@@ -45,7 +45,7 @@ public class ArvoreFuncionarios {
     }
 
 
-    private FuncionarioNode removerRecursivo(FuncionarioNode node, String nome) {
+    private FuncionarioBaseNode removerRecursivo(FuncionarioBaseNode node, String nome) {
         if (node == null) {
             return null;
         }
@@ -71,21 +71,21 @@ public class ArvoreFuncionarios {
         root = removerRecursivo(root, nome);
     }
 
-    private FuncionarioBase minValue(FuncionarioNode node) {
-        FuncionarioBase menorfuncionario = node.funcionario;
+    private FuncionarioBase minValue(FuncionarioBaseNode node) {
+        FuncionarioBase menorFuncionario = node.funcionario;
         while(node.leftChild != null) {
-            menorfuncionario = node.leftChild.funcionario;
+            menorFuncionario = node.leftChild.funcionario;
             node = node.leftChild;
         }
 
-        return menorfuncionario;
+        return menorFuncionario;
     }
 
     public void mostarDadosEmOrdem() {
         mostarDadosEmOrdemRecursivo(root);
     }
 
-    private void mostarDadosEmOrdemRecursivo(FuncionarioNode node) {
+    private void mostarDadosEmOrdemRecursivo(FuncionarioBaseNode node) {
         if (node != null) {
             mostarDadosEmOrdemRecursivo(node.leftChild);
             System.out.println(node.funcionario.getNome() + " - " + node.funcionario.getCargo());
