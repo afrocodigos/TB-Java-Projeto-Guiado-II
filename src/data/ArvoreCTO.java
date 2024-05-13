@@ -1,7 +1,6 @@
 package data;
 
-import funcionariosStarlabs.ArvoreDeFuncionarios;
-import funcionariosStarlabs.CTO;
+import model.CTO;
 
 public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
     

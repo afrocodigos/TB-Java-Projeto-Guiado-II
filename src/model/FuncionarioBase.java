@@ -4,7 +4,7 @@ import interf4ce.FuncionarioInterface;
 
 import java.util.UUID;
 
-public abstract class FuncionarioBase implements FuncionarioInterface {
+public abstract class FuncionarioBase implements interf4ce.FuncionarioBaseInterface {
     protected UUID id;
     protected String nome;
     protected String cargo;
@@ -51,6 +51,7 @@ public abstract class FuncionarioBase implements FuncionarioInterface {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+    @Override
     public UUID getId() {
         return id;
     }
