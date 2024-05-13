@@ -10,10 +10,10 @@ public class ArvoreBinariaFromScratch {
         if(nodeFuncionario == null){
             return new NodeFuncionario(funcionario);
         }
-        if(funcionario.getNomeFuncionario().compareTo(nodeFuncionario.getNomeFuncionario()) < 0){
+        if(funcionario.getNomeFuncionario().compareTo(nodeFuncionario.funcionario.getNomeFuncionario()) < 0){
             nodeFuncionario.leftChild = inserirRecursivo(nodeFuncionario.leftChild, funcionario);
         }
-        else if (funcionario.getNomeFuncionario().compareTo(nodeFuncionario.getNomeFuncionario()) > 0){
+        else if (funcionario.getNomeFuncionario().compareTo(nodeFuncionario.funcionario.getNomeFuncionario()) > 0){
             nodeFuncionario.rightChild = inserirRecursivo(nodeFuncionario.rightChild, funcionario);
         }
 
