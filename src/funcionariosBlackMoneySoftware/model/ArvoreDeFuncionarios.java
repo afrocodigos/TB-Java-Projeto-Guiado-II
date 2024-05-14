@@ -36,6 +36,13 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         }
     }
 
+    public void mostrarTodos(){
+        System.out.println("\n === Todos os Funcionários ===");
+        for (T funcionarioBase : funcionarios) {
+            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
+        }
+    }
+
     public void atualizarDados(String nome, double novoSalario, String novoCargo){
         T funcionarioParaAtualizar = buscar(nome);
         if (funcionarioParaAtualizar != null){
