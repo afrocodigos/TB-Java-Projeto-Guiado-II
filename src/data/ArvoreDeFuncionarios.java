@@ -22,7 +22,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
 
     static {
         try {
-            FileHandler fileHandler = new FileHandler("./InformationLogs", true);
+            FileHandler fileHandler = new FileHandler("./InformationLogs/", true);
             LOGGER.addHandler(fileHandler);
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Erro ao configurar o FileHandler", e);
@@ -36,10 +36,10 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
         if (!existeFuncionario(funcionario)) {
             funcionarios.add(funcionario);
             System.out.println("Funcionário adicionado com sucesso!");
-            LOGGER.info("Funcionário adicionado com sucesso: " + funcionario.getNome());
+            LOGGER.info("Funcionário: " + funcionario.getNome() + " adicionado com sucesso: ");
         } else {
             LOGGER.setLevel(Level.WARNING);
-            LOGGER.warning("Tentativa de adicionar funcionário duplicado: " + funcionario.getNome());
+            LOGGER.warning("Tentativa de adicionar funcionário: " + funcionario.getNome() + " duplicado");
             System.out.println("Já existe um funcionário com o mesmo nome e cpf na nossa base de dados. ");
         }
     }
@@ -54,11 +54,11 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
         LOGGER.setLevel(Level.INFO);
         for (T funcionarioBase : funcionarios) {
             if (funcionarioBase.getNome().equals(nome)) {
-                LOGGER.info("Funcionário " + funcionarioBase.getNome() + "encontrado com sucesso. ");
+                LOGGER.info("Funcionário : " + funcionarioBase.getNome() + " encontrado com sucesso. ");
                 return funcionarioBase; // retorno o funcionário encontraro
             }
         }
-        LOGGER.warning("Funcionario" + nome + "não encontrado");
+        LOGGER.warning("Funcionario : " + nome + " não encontrado");
         System.out.println("Funcionário não existe na nossa base de dados");
         return null;
     }
@@ -69,11 +69,11 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
         T funcionarioParaRemover = buscar(nome);
         if (funcionarioParaRemover != null) {
             funcionarios.remove(funcionarioParaRemover);
-            LOGGER.info("Funcionário removido com sucesso: " + nome);
-            System.out.println("Funcionário " + nome + " removido com sucesso!");
+            LOGGER.info("Funcionário: " + nome + "removido com sucesso: ");
+            System.out.println("Funcionário: " + nome + "removido com sucesso!");
         } else {
             LOGGER.setLevel(Level.WARNING);
-            LOGGER.warning("Tentativa de remover funcionário inexistente: " + nome);
+            LOGGER.warning("Tentativa de remover funcionário:"  + nome + "inexistente");
             System.out.println(nome + "Não foi encontrado na nossa base de dados");
         }
     }
@@ -95,10 +95,10 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
         if (funcionarioParaAtualizar != null) {
             funcionarioParaAtualizar.setSalario(novoSalario);
             funcionarioParaAtualizar.setCargo(novoCargo);
-            LOGGER.info("Dados do funcionário atualizados com sucesso: " + nome);
+            LOGGER.info("Dados do funcionário: "  + nome + " atualizados com sucesso");
             System.out.println("Dados da pessoa funcionária atulizados com sucesso!");
         } else {
-            LOGGER.warning("Tentativa de atualizar dados de funcionário inexistente: " + nome);
+            LOGGER.warning("Tentativa de atualizar dados de funcionário: "  + nome + " inexistente");
             System.out.println("Pessoa não encontrada em nossa base!");
         }
     }
