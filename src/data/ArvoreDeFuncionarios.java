@@ -46,7 +46,12 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
 
     @Override
     public boolean existeFuncionario(T funcionario) {
-        return false;
+        for (T f : funcionarios) {
+            if (f.getNome().equals(funcionario.getNome()) && f.getCpf().equals(funcionario.getCpf())) {
+                return true; // Funcionário encontrado
+            }
+        }
+        return false; // Funcionário não encontrado
     }
 
     @Override
