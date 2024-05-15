@@ -75,7 +75,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> implements ArvoreIn
         if (funcionarioParaRemover != null) {
             funcionarios.remove(funcionarioParaRemover);
             LOGGER.info("Funcionário: " + nome + "removido com sucesso: ");
-            System.out.println("Funcionário: " + nome + "removido com sucesso!");
+            System.out.println("Funcionário: " + nome + " removido com sucesso!");
         } else {
             LOGGER.setLevel(Level.WARNING);
             LOGGER.warning("Tentativa de remover funcionário:"  + nome + "inexistente");
