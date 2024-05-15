@@ -1,4 +1,4 @@
-package entities;
+package utils;
 
 public class NodeFuncionario{
     FuncionarioBase funcionario;

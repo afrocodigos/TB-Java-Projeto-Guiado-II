@@ -1,4 +1,4 @@
-package entities;
+package utils;
 
 public class ArvoreBinariaFromScratch {
     private NodeFuncionario root;
