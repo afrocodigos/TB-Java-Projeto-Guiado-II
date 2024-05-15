@@ -30,6 +30,6 @@ public class Main {
         organogramaGeral.mostrarTodosFuncionarios();
 
         System.out.println("REMOVENDO UM FUNCIONÁRIO DO ORGANOGRAMA GERAL");
-        organogramaGeral.removerFuncionario(func6);
+        organogramaGeral.removerFuncionario(func6.getCpfFuncionario());
     }
 }
