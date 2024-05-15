@@ -11,7 +11,7 @@ Este projeto tinha como objetivo a construção de um sistema de gerenciamento d
 
 ## Fluxograma
 
-!(https://github.com/LhamCode/TB-Java-Projeto-Guiado-II/assets/130193631/60cd668b-e916-41b6-a714-b69d2ef2ebed)
+![fluxograma](https://github.com/LhamCode/TB-Java-Projeto-Guiado-II/assets/130193631/60cd668b-e916-41b6-a714-b69d2ef2ebed)
 
 
 
