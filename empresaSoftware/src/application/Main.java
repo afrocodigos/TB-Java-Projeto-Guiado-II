@@ -16,6 +16,7 @@ public class Main {
         FuncionarioGerente func7 = new FuncionarioGerente("Agatha","000.000.000-07");
         FuncionarioVP func8 = new FuncionarioVP("Christian","000.000.000-08");
 
+        System.out.println("ADICIONANDO FUNCIONÁRIOS AO ORGANOGRAMA GERAL");
         organogramaGeral.adicionarFuncionario(func1);
         organogramaGeral.adicionarFuncionario(func2);
         organogramaGeral.adicionarFuncionario(func3);
@@ -24,6 +25,11 @@ public class Main {
         organogramaGeral.adicionarFuncionario(func6);
         organogramaGeral.adicionarFuncionario(func7);
         organogramaGeral.adicionarFuncionario(func8);
+
+        System.out.println("MOSTRANDO ORGANOGRAMA GERAL");
         organogramaGeral.mostrarTodosFuncionarios();
+
+        System.out.println("REMOVENDO UM FUNCIONÁRIO DO ORGANOGRAMA GERAL");
+        organogramaGeral.removerFuncionario(func6);
     }
 }
