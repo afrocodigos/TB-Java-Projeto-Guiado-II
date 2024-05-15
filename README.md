@@ -9,7 +9,9 @@ Projeto Guiado II lecionado no projeto Afrocódigos desenvolvedor back-end atrav
 Este projeto tinha como objetivo a construção de um sistema de gerenciamento dos colaboradores de uma empresa, implementado através completo de operações CRUD (Criar, Ler, Atualizar, Deletar) para gerenciar os colaboradores de uma empresa, suas áreas e seus gestores e aplicando conceitos de árvore binária e paradigma da orientação a objetos.
 
 
+## Fluxograma
 
+!(https://github.com/LhamCode/TB-Java-Projeto-Guiado-II/assets/130193631/60cd668b-e916-41b6-a714-b69d2ef2ebed)
 
 
 
