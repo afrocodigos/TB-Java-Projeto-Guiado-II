@@ -1,4 +1,4 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.model;
 
 public class FuncionarioBaseNode {
     FuncionarioBase funcionario;

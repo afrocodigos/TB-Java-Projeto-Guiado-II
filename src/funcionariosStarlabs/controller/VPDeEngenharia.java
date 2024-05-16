@@ -1,7 +1,9 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.controller;
+
+import funcionariosStarlabs.model.FuncionarioBase;
 
 public class VPDeEngenharia extends FuncionarioBase {
-    
+
     public VPDeEngenharia(String nome, String Cargo, double salario, String cpf) {
         super(nome, Cargo, salario, cpf);
     }

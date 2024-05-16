@@ -1,4 +1,4 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.model;
 
 public class ArvoreFuncionarios {
     private FuncionarioBaseNode root;
@@ -26,7 +26,7 @@ public class ArvoreFuncionarios {
     }
 
     private FuncionarioBase buscarRecursivo(FuncionarioBaseNode node, String nome) {
-        
+
         if (node == null || node.funcionario.getNome().equals(nome)) {
             return node == null ? null : node.funcionario;
         }
@@ -36,14 +36,13 @@ public class ArvoreFuncionarios {
         } else {
             buscarRecursivo(node.rightChild, nome);
         }
-        
+
         return null;
     }
 
     public FuncionarioBase buscar(String nome) {
         return buscarRecursivo(root, nome);
     }
-
 
     private FuncionarioBaseNode removerRecursivo(FuncionarioBaseNode node, String nome) {
         if (node == null) {
@@ -57,9 +56,9 @@ public class ArvoreFuncionarios {
         } else {
             if (node.leftChild == null) {
                 return node.rightChild;
-                } else if (node.rightChild == null) {
-                    return node.leftChild;
-                }
+            } else if (node.rightChild == null) {
+                return node.leftChild;
+            }
 
             node.funcionario = minValue(node.rightChild);
             node.rightChild = removerRecursivo(node.rightChild, node.funcionario.getNome());
@@ -73,7 +72,7 @@ public class ArvoreFuncionarios {
 
     private FuncionarioBase minValue(FuncionarioBaseNode node) {
         FuncionarioBase menorFuncionario = node.funcionario;
-        while(node.leftChild != null) {
+        while (node.leftChild != null) {
             menorFuncionario = node.leftChild.funcionario;
             node = node.leftChild;
         }
