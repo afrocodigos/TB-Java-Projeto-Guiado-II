@@ -1,4 +1,5 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.model;
+
 import java.util.TreeSet;
 
 public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
@@ -15,9 +16,9 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     }
 
     public T buscar(String nome) {
-        
+
         for (T funcionarioBase : funcionarios) {
-            if (funcionarioBase.getNome().equals(nome)) {
+            if (funcionarioBase.getNome().equalsIgnoreCase(nome)) {
                 return funcionarioBase; // retorno o funcionário encontrado
             }
         }
@@ -30,6 +31,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         if (funcionarioParaRemover != null) {
             funcionarios.remove(funcionarioParaRemover);
             System.out.println("Funcionário " + nome + " removido com sucesso!");
+
         } else {
             System.out.println(nome + "Não foi encontrado na nossa base de dados");
         }
@@ -38,7 +40,9 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     public void mostrarTodos() {
         System.out.println("\n=== Todos os Funcionário ===");
         for (T funcionarioBase : funcionarios) {
-            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
+            System.out.println("Id " + funcionarioBase.getId() + " - " + funcionarioBase.getNome() + " - "
+                    + funcionarioBase.getCargo() + " - "
+                    + funcionarioBase.getSalario());
         }
     }
 
@@ -51,5 +55,11 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         } else {
             System.out.println("Pessoa não encontrada em nossa base!");
         }
+    }
+
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return super.toString();
     }
 }
