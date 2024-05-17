@@ -1,6 +1,11 @@
 package funcionariosStarlabs.model;
 
 public interface FuncionarioInterface {
+
+    int getId();
+
+    void setId(int id);
+
     String getNome();
 
     void setNome(String nome);

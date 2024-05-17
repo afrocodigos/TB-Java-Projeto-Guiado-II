@@ -5,12 +5,22 @@ public abstract class FuncionarioBase implements FuncionarioInterface {
     protected String cargo;
     protected double salario;
     protected String cpf;
+    protected int id;
 
-    public FuncionarioBase(String nome, String cargo, double salario, String cpf) {
+    public FuncionarioBase(int id, String nome, String cargo, double salario, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.cargo = cargo;
         this.salario = salario;
         this.cpf = cpf;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -52,4 +62,5 @@ public abstract class FuncionarioBase implements FuncionarioInterface {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
+
 }
