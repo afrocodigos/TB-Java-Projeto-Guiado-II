@@ -1,4 +1,4 @@
-package rhIbalo;
+package rhIbalo.model;
 
 public interface FuncionarioInterface {
 

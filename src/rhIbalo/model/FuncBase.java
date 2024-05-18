@@ -1,5 +1,4 @@
-package rhIbalo;
-
+package rhIbalo.model;
 
 
 public abstract class FuncBase implements FuncionarioInterface {

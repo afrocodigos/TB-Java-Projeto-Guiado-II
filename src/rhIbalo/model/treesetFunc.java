@@ -1,4 +1,4 @@
-package rhIbalo;
+package rhIbalo.model;
 
 import java.util.TreeSet;
 

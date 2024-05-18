@@ -1,5 +1,7 @@
-package rhIbalo;
+package rhIbalo.controller;
 
+
+import rhIbalo.model.FuncBase;
 
 public class Cto extends FuncBase {
 

@@ -1,8 +1,10 @@
-package rhIbalo;
+package rhIbalo.controller;
+import rhIbalo.model.FuncBase;
+
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class GeradorFuncionario extends FuncBase{
+public class GeradorFuncionario extends FuncBase {
 
     public GeradorFuncionario(String nome, String cargo, double salario, String cpf) {
         super(nome, cargo, salario, cpf);

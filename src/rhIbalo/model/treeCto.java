@@ -1,7 +1,12 @@
-package rhIbalo;
+package rhIbalo.model;
 
+
+import rhIbalo.controller.Cto;
 
 public class treeCto extends treesetFunc<Cto> {
+
+
+
 
     @Override
     public void adicionar(Cto funcionario) {
