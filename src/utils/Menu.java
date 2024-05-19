@@ -73,7 +73,7 @@ public class Menu {
 
     public static void AtualizarDados(ArvoreDeFuncionarios<FuncionarioBase> arvore) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o nome do funcionário que deseja atualizar: ");
+        System.out.println("Digite o cpf do funcionário que deseja atualizar: ");
         String cpf = scanner.nextLine();
         arvore.atualizarDados(cpf);
     }
