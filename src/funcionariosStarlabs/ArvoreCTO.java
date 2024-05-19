@@ -1,6 +1,6 @@
 package funcionariosStarlabs;
 
-public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
+public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> implements java.io.Serializable{
     
     @Override
     public void adicionar(CTO funcionario) {

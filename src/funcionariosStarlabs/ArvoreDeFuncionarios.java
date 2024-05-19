@@ -1,7 +1,7 @@
 package funcionariosStarlabs;
 import java.util.TreeSet;
 
-public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
+public class ArvoreDeFuncionarios<T extends FuncionarioBase>{
 
     private TreeSet<T> funcionarios;
 
@@ -51,5 +51,9 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
         } else {
             System.out.println("Pessoa não encontrada em nossa base!");
         }
+    }
+
+    public TreeSet<T> getFuncionarios() {
+        return funcionarios;
     }
 }
