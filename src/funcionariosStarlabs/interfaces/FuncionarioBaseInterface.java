@@ -1,4 +1,4 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.interfaces;
 
 public interface FuncionarioBaseInterface {
     String getNome();

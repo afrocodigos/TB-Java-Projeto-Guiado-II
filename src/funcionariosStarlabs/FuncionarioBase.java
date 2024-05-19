@@ -1,6 +1,9 @@
 package funcionariosStarlabs;
 
+import funcionariosStarlabs.interfaces.FuncionarioBaseInterface;
+
 public abstract class FuncionarioBase implements FuncionarioBaseInterface {
+
     protected String nome;
     protected String cargo;
     protected double salario;

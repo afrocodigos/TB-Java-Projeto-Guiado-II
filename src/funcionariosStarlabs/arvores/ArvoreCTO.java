@@ -1,14 +1,16 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.arvores;
 
-public class ArvoreVPDeEngenharia extends ArvoreDeFuncionarios<VPDeEngenharia> {
+import funcionariosStarlabs.controllers.CTO;
+
+public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
     
     @Override
-    public void adicionar(VPDeEngenharia funcionario) {
+    public void adicionar(CTO funcionario) {
         super.adicionar(funcionario);
     }
 
     @Override
-    public VPDeEngenharia buscar(String nome) {
+    public CTO buscar(String nome) {
         return super.buscar(nome);
     }
 
@@ -26,5 +28,4 @@ public class ArvoreVPDeEngenharia extends ArvoreDeFuncionarios<VPDeEngenharia> {
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
         super.atualizarDados(nome, novoSalario, novoCargo);
     }
-
 }

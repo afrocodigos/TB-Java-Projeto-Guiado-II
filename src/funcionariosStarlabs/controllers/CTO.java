@@ -1,4 +1,6 @@
-package funcionariosStarlabs;
+package funcionariosStarlabs.controllers;
+
+import funcionariosStarlabs.FuncionarioBase;
 
 public class CTO extends FuncionarioBase {
     
