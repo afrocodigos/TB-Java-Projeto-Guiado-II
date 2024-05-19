@@ -1,6 +1,6 @@
 package funcionariosStarlabs;
 
-public class FuncionarioBaseNode {
+public class FuncionarioBaseNode implements java.io.Serializable{
     FuncionarioBase funcionario;
     FuncionarioBaseNode leftChild;
     FuncionarioBaseNode rightChild;

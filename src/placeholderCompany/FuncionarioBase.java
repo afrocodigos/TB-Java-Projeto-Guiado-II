@@ -1,4 +1,4 @@
-package funcionariosStarlabs;
+package placeholderCompany;
 
 public abstract class FuncionarioBase implements FuncionarioBaseInterface{
     protected String nome;
@@ -44,5 +44,19 @@ public abstract class FuncionarioBase implements FuncionarioBaseInterface{
     @Override
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Cargo: " + cargo + ", Salário: R$" + salario + ", CPF: " + cpf;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof FuncionarioBase) {
+            FuncionarioBase funcionario = (FuncionarioBase) obj;
+            return this.cpf.equals(funcionario.getCpf());
+        }
+        return false;
     }
 }

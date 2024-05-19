@@ -1,6 +1,7 @@
 package funcionariosStarlabs;
+import java.io.Serializable;
 
-public class CTO extends FuncionarioBase {
+public class CTO extends FuncionarioBase implements Serializable{
     
     public CTO(String nome, String cargo, double salario, String cpf) {
         super(nome, cargo, salario, cpf);
