@@ -5,6 +5,7 @@ import funcionariosBlackMoneySoftware.model.trees.ArvoreDeFuncionarios;
 public class FuncionarioRH extends FuncionarioBase {
     public FuncionarioRH(String nome, String cargo, double salario, String login, String senha, String cpf) {
         super(nome, cargo, salario, login, senha, cpf);
+        this.setSenha(senha);
     }
 
     public void atualizarSalario(FuncionarioBase funcionario, double novoSalario) {
@@ -25,4 +26,10 @@ public class FuncionarioRH extends FuncionarioBase {
         funcionario.setCargo(novoCargo);
         System.out.println("Cargo atualizado para " + novoCargo);
     }
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        return this.getLogin().equals(login) && this.getSenha().equals(senha);
+    }
+
 }

@@ -8,6 +8,7 @@ public class FuncionarioBase implements FuncionarioInterface {
     protected String cargo;
     protected double salario;
     protected String login;
+    protected String getSenha;
     private String senha;
     private String cpf;
     private ValidadorDaSenha validadorDaSenha;
@@ -95,5 +96,10 @@ public class FuncionarioBase implements FuncionarioInterface {
         } else {
             System.out.println("Senha inválida. A senha deve ter entre 8 e 16 caracteres, incluindo letras maiúsculas e minúsculas, números e caracteres especiais.");
         }
+    }
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        return this.login.equals(login) && this.getSenha().equals(senha);
     }
 }

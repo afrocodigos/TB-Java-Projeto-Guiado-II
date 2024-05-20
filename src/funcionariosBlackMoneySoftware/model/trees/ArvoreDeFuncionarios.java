@@ -53,4 +53,8 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
             System.out.println(nome + " não encontrado na nossa base de dados");
         }
     }
+
+    public TreeSet<T> getTodosFuncionarios() {
+        return funcionarios;
+    }
 }

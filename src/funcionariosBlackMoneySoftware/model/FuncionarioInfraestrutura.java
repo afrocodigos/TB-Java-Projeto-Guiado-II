@@ -16,4 +16,10 @@ public class FuncionarioInfraestrutura extends FuncionarioBase {
     public void notificar() {
         System.out.println("Notificação: sistema em manutenção.");
     }
+
+    @Override
+    public boolean autenticar(String login, String senha) {
+        return this.login.equals(login) && this.getSenha.equals(senha);
+    }
+
 }

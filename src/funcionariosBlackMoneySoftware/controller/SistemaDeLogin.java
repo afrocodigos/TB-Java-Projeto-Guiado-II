@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class SistemaDeLogin {
     private Map<String, String> logins;
-    private String loginCTO = "cto";
-    private String senhaCTO = "Cto@123321";
+    private String login;
+    private String senha;
 
     public SistemaDeLogin() {
         logins = new HashMap<>();
-        logins.put(loginCTO, senhaCTO);
+        logins.put(login, senha);
     }
 
     public boolean login(String login, String senha) {
