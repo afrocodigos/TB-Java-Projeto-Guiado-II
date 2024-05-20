@@ -46,18 +46,20 @@ public class Main {
         // Filtragem dos Analistas de Desenvolvimento
         System.out.println("\nListagem dos Analistas de desenvolvimento");
         arvoreAnalista.mostrarTodos();
+
+        System.out.println("\nAtualização de Analista de desenvolvimento");
         arvoreAnalista.atualizarDados("Gustavo", 3200, "Analista Pleno");
         arvoreAnalista.mostrarTodos();
 
         // Adicionando Consultor
-        Consultor funcionario6 = new Consultor("Otávio", "Consultor", 2000, "41645869875", "Financeiro BlackCoders");
-        Consultor funcionario8 = new Consultor("Betto", "Consultor", 2000, "41645869875", "Financeiro BlackCoders");
+        Consultor consultor1 = new Consultor("Otávio", "Consultor", 2000, "41645869875", "Financeiro BlackCoders");
+        Consultor consultor2 = new Consultor("Betto", "Consultor", 2000, "41645869875", "Financeiro BlackCoders");
 
         // Criando uma árvore para todos os Consultores cadastrados
         System.out.println("Adicionando Consultores\n");
         ArvoreDeConsultores arvoreDeConsultores = new ArvoreDeConsultores<>();
-        arvoreDeConsultores.adicionar(funcionario6);
-        arvoreDeConsultores.adicionar(funcionario8);
+        arvoreDeConsultores.adicionar(consultor1);
+        arvoreDeConsultores.adicionar(consultor2);
         arvoreDeConsultores.mostrarTodos();
 
         System.out.println("Removendo Consultores\n");
