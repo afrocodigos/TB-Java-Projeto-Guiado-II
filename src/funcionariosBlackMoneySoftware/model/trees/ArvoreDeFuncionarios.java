@@ -1,57 +1,56 @@
-package funcionariosBlackMoneySoftware.model;
+package funcionariosBlackMoneySoftware.model.trees;
+
+import funcionariosBlackMoneySoftware.model.FuncionarioBase;
 
 import java.util.TreeSet;
 
 public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
-
     private TreeSet<T> funcionarios;
 
     public ArvoreDeFuncionarios() {
-        funcionarios = new TreeSet<>((f1, f2 -> f1.getNome().compareTo(f2.getNome())));
+        funcionarios = new TreeSet<>((f1, f2) -> f1.getNome().compareTo(f2.getNome()));
     }
 
-    public void adicionarFuncionario(T funcionario){
+    public void adicionarFuncionario(T funcionario) {
         funcionarios.add(funcionario);
         System.out.println("Funcionário adicionado com sucesso");
     }
 
-    public T buscar(String nome){
+    public T buscar(String nome) {
         for (T funcionarioBase : funcionarios) {
-            if (funcionarioBase.getNome().equals(nome)){
+            if (funcionarioBase.getNome().equals(nome)) {
                 return funcionarioBase;
             }
-
         }
         System.out.println("Funcionário não existe na nossa base de dados");
         return null;
     }
 
-    public void removerFuncionario(String nome){
+    public void removerFuncionario(String nome) {
         T funcionarioParaRemover = buscar(nome);
-        if (funcionarioParaRemover != null){
+        if (funcionarioParaRemover != null) {
             funcionarios.remove(funcionarioParaRemover);
-            System.out.println("Funcionário " + nome + "removido com sucesso");
+            System.out.println("Funcionário " + nome + " removido com sucesso");
         } else {
-            System.out.println(nome + "Não foi encontrando na nossa base de dados");
+            System.out.println(nome + " não foi encontrado na nossa base de dados");
         }
     }
 
-    public void mostrarTodos(){
+    public void mostrarTodos() {
         System.out.println("\n === Todos os Funcionários ===");
         for (T funcionarioBase : funcionarios) {
             System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
         }
     }
 
-    public void atualizarDados(String nome, double novoSalario, String novoCargo){
+    public void atualizarDados(String nome, double novoSalario, String novoCargo) {
         T funcionarioParaAtualizar = buscar(nome);
-        if (funcionarioParaAtualizar != null){
+        if (funcionarioParaAtualizar != null) {
             funcionarioParaAtualizar.setSalario(novoSalario);
             funcionarioParaAtualizar.setCargo(novoCargo);
             System.out.println("Dados atualizados com sucesso");
         } else {
-            System.out.println(nome + "não encontrade na nossa base de dados");
+            System.out.println(nome + " não encontrado na nossa base de dados");
         }
     }
-
 }
