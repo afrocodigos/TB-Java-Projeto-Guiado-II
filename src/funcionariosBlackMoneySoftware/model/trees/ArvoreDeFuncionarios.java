@@ -1,60 +1,42 @@
+// ArvoreDeFuncionarios.java
 package funcionariosBlackMoneySoftware.model.trees;
 
 import funcionariosBlackMoneySoftware.model.FuncionarioBase;
 
-import java.util.TreeSet;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
-    private TreeSet<T> funcionarios;
+    private Map<String, T> funcionarios;
 
     public ArvoreDeFuncionarios() {
-        funcionarios = new TreeSet<>((f1, f2) -> f1.getNome().compareTo(f2.getNome()));
+        this.funcionarios = new HashMap<>();
     }
 
     public void adicionarFuncionario(T funcionario) {
-        funcionarios.add(funcionario);
-        System.out.println("Funcionário adicionado com sucesso");
+        funcionarios.put(funcionario.getLogin(), funcionario);
     }
 
-    public T buscar(String nome) {
-        for (T funcionarioBase : funcionarios) {
-            if (funcionarioBase.getNome().equals(nome)) {
-                return funcionarioBase;
-            }
-        }
-        System.out.println("Funcionário não existe na nossa base de dados");
-        return null;
+    public T buscar(String login) {
+        return funcionarios.get(login);
     }
 
-    public void removerFuncionario(String nome) {
-        T funcionarioParaRemover = buscar(nome);
-        if (funcionarioParaRemover != null) {
-            funcionarios.remove(funcionarioParaRemover);
-            System.out.println("Funcionário " + nome + " removido com sucesso");
-        } else {
-            System.out.println(nome + " não foi encontrado na nossa base de dados");
+    public void removerFuncionario(String login) {
+        funcionarios.remove(login);
+    }
+
+    public void atualizarDados(String login, double novoSalario, String novoCargo) {
+        T funcionario = funcionarios.get(login);
+        if (funcionario != null) {
+            funcionario.setSalario(novoSalario);
+            funcionario.setCargo(novoCargo);
         }
     }
 
     public void mostrarTodos() {
-        System.out.println("\n === Todos os Funcionários ===");
-        for (T funcionarioBase : funcionarios) {
-            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
+        for (T funcionario : funcionarios.values()) {
+            funcionario.visualizarInformacoes();
+            System.out.println();
         }
-    }
-
-    public void atualizarDados(String nome, double novoSalario, String novoCargo) {
-        T funcionarioParaAtualizar = buscar(nome);
-        if (funcionarioParaAtualizar != null) {
-            funcionarioParaAtualizar.setSalario(novoSalario);
-            funcionarioParaAtualizar.setCargo(novoCargo);
-            System.out.println("Dados atualizados com sucesso");
-        } else {
-            System.out.println(nome + " não encontrado na nossa base de dados");
-        }
-    }
-
-    public TreeSet<T> getTodosFuncionarios() {
-        return funcionarios;
     }
 }

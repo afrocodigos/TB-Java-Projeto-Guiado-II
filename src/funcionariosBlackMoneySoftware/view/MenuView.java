@@ -31,7 +31,9 @@ public class MenuView {
         System.out.println("2. Sair");
 
         System.out.print("Escolha uma opção: ");
-        return nextIntWithClearBuffer();
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer
+        return opcao;
     }
 
     public int mostrarMenuCTO() {
@@ -43,7 +45,9 @@ public class MenuView {
         System.out.println("5. Logout");
 
         System.out.print("Escolha uma opção: ");
-        return nextIntWithClearBuffer();
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer
+        return opcao;
     }
 
     public int mostrarMenuFuncionario(FuncionarioBase funcionarioLogado) {
@@ -68,7 +72,9 @@ public class MenuView {
         System.out.println("7. Logout");
 
         System.out.print("Escolha uma opção: ");
-        return nextIntWithClearBuffer();
+        int opcao = scanner.nextInt();
+        scanner.nextLine(); // Limpa o buffer
+        return opcao;
     }
 
     // Métodos para solicitar dados de funcionários
@@ -116,11 +122,5 @@ public class MenuView {
     public String solicitarNovoCargo() {
         System.out.print("Novo Cargo: ");
         return scanner.nextLine();
-    }
-
-    private int nextIntWithClearBuffer() {
-        int input = scanner.nextInt();
-        scanner.nextLine(); // Limpa o buffer
-        return input;
     }
 }

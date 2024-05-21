@@ -1,6 +1,11 @@
+// MainController.java
 package funcionariosBlackMoneySoftware.controller;
 
-import funcionariosBlackMoneySoftware.model.*;
+import funcionariosBlackMoneySoftware.model.CTO;
+import funcionariosBlackMoneySoftware.model.FuncionarioBase;
+import funcionariosBlackMoneySoftware.model.FuncionarioDesenvolvimento;
+import funcionariosBlackMoneySoftware.model.FuncionarioInfraestrutura;
+import funcionariosBlackMoneySoftware.model.FuncionarioRH;
 import funcionariosBlackMoneySoftware.model.trees.ArvoreDeFuncionarios;
 import funcionariosBlackMoneySoftware.view.MenuView;
 
@@ -13,12 +18,16 @@ public class MainController {
     private final MenuView menuView;
     private final CTO cto;
 
-    public MainController() {
+    public MainController(CTO cto) {
         this.scanner = new Scanner(System.in);
         this.sistemaDeLogin = new SistemaDeLogin();
         this.arvoreDeFuncionarios = new ArvoreDeFuncionarios<>();
         this.menuView = new MenuView(scanner);
-        this.cto = new CTO(); // Instancia o CTO no construtor
+        this.cto = cto;
+
+        // Adicionando o CTO à árvore de funcionários
+        arvoreDeFuncionarios.adicionarFuncionario(cto);
+        sistemaDeLogin.adicionarLogin(cto.getLogin(), cto.getSenha());
     }
 
     public void iniciarSistema() {
@@ -29,15 +38,13 @@ public class MainController {
             switch (opcaoInicial) {
                 case 1:
                     if (login()) {
-                        if (cto.autenticar(cto.getLogin(), cto.getSenha())) {
+                        FuncionarioBase funcionarioLogado = arvoreDeFuncionarios.buscar(menuView.solicitarLogin());
+                        if (funcionarioLogado instanceof CTO) {
                             menuCTO();
+                        } else if (funcionarioLogado != null) {
+                            menuFuncionario(funcionarioLogado);
                         } else {
-                            FuncionarioBase funcionarioLogado = arvoreDeFuncionarios.buscar(cto.getLogin());
-                            if (funcionarioLogado != null) {
-                                menuFuncionario(funcionarioLogado);
-                            } else {
-                                System.out.println("Funcionário não encontrado.");
-                            }
+                            System.out.println("Funcionário não encontrado.");
                         }
                     } else {
                         System.out.println("Login ou senha incorretos.");
@@ -56,23 +63,8 @@ public class MainController {
         System.out.println("Login no sistema");
         String login = menuView.solicitarLogin();
         String senha = menuView.solicitarSenha();
-
-        // Verifica se é o CTO
-        if (cto.autenticar(login, senha)) {
-            return true;
-        }
-
-        // Verifica se é outro funcionário
-        for (FuncionarioBase funcionario : arvoreDeFuncionarios.getTodosFuncionarios()) {
-            if (funcionario.autenticar(login, senha)) {
-                return true;
-            }
-        }
-
-        // Se não corresponder a nenhum usuário, retorna false
-        return false;
+        return cto.autenticar(login, senha) || sistemaDeLogin.login(login, senha);
     }
-
 
     private void menuCTO() {
         boolean executando = true;
@@ -182,7 +174,11 @@ public class MainController {
     }
 
     private void opcao3(FuncionarioBase funcionarioLogado) {
-        if (funcionarioLogado instanceof FuncionarioRH) {
+        if (funcionarioLogado instanceof FuncionarioDesenvolvimento) {
+            ((FuncionarioDesenvolvimento) funcionarioLogado).iniciarProjeto();
+        } else if (funcionarioLogado instanceof FuncionarioInfraestrutura) {
+            ((FuncionarioInfraestrutura) funcionarioLogado).gerenciarServidor();
+        } else if (funcionarioLogado instanceof FuncionarioRH) {
             String nomeFuncionario = menuView.solicitarNome();
             FuncionarioBase funcionario = arvoreDeFuncionarios.buscar(nomeFuncionario);
             if (funcionario != null) {
@@ -195,14 +191,22 @@ public class MainController {
     }
 
     private void opcao4(FuncionarioBase funcionarioLogado) {
-        if (funcionarioLogado instanceof FuncionarioRH) {
+        if (funcionarioLogado instanceof FuncionarioDesenvolvimento) {
+            ((FuncionarioDesenvolvimento) funcionarioLogado).atualizarProjeto();
+        } else if (funcionarioLogado instanceof FuncionarioInfraestrutura) {
+            ((FuncionarioInfraestrutura) funcionarioLogado).rodarScript();
+        } else if (funcionarioLogado instanceof FuncionarioRH) {
             String nomeFuncionario = menuView.solicitarNome();
             ((FuncionarioRH) funcionarioLogado).demitirFuncionario(arvoreDeFuncionarios, nomeFuncionario);
         }
     }
 
     private void opcao5(FuncionarioBase funcionarioLogado) {
-        if (funcionarioLogado instanceof FuncionarioRH) {
+        if (funcionarioLogado instanceof FuncionarioDesenvolvimento) {
+            ((FuncionarioDesenvolvimento) funcionarioLogado).finalizarProjeto();
+        } else if (funcionarioLogado instanceof FuncionarioInfraestrutura) {
+            ((FuncionarioInfraestrutura) funcionarioLogado).notificar();
+        } else if (funcionarioLogado instanceof FuncionarioRH) {
             String nomeFuncionario = menuView.solicitarNome();
             FuncionarioBase funcionario = arvoreDeFuncionarios.buscar(nomeFuncionario);
             if (funcionario != null) {
@@ -214,7 +218,9 @@ public class MainController {
     }
 
     private void opcao6(FuncionarioBase funcionarioLogado) {
-        if (funcionarioLogado instanceof FuncionarioRH) {
+        if (funcionarioLogado instanceof FuncionarioDesenvolvimento) {
+            ((FuncionarioDesenvolvimento) funcionarioLogado).notificar();
+        } else if (funcionarioLogado instanceof FuncionarioRH) {
             String nomeFuncionario = menuView.solicitarNome();
             FuncionarioBase funcionario = arvoreDeFuncionarios.buscar(nomeFuncionario);
             if (funcionario != null) {

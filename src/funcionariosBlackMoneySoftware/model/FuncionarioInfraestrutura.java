@@ -19,7 +19,7 @@ public class FuncionarioInfraestrutura extends FuncionarioBase {
 
     @Override
     public boolean autenticar(String login, String senha) {
-        return this.login.equals(login) && this.getSenha.equals(senha);
+        return this.login.equals(login) && this.getSenha().equals(senha);
     }
 
 }

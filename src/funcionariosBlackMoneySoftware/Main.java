@@ -1,13 +1,13 @@
+// Main.java
 package funcionariosBlackMoneySoftware;
 
 import funcionariosBlackMoneySoftware.controller.MainController;
+import funcionariosBlackMoneySoftware.model.CTO;
 
 public class Main {
     public static void main(String[] args) {
-        // Criar uma instância de MainController
-        MainController controller = new MainController();
-
-        // Chamar o método iniciarSistema()
+        CTO cto = new CTO();
+        MainController controller = new MainController(cto);
         controller.iniciarSistema();
     }
 }
