@@ -1,4 +1,3 @@
-// FuncionarioBase.java
 package funcionariosBlackMoneySoftware.model;
 
 import funcionariosBlackMoneySoftware.controller.FuncionarioInterface;

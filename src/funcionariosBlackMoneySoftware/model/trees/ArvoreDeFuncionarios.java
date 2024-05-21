@@ -1,4 +1,3 @@
-// ArvoreDeFuncionarios.java
 package funcionariosBlackMoneySoftware.model.trees;
 
 import funcionariosBlackMoneySoftware.model.FuncionarioBase;

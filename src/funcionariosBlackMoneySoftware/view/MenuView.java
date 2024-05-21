@@ -1,4 +1,3 @@
-// MenuView.java
 package funcionariosBlackMoneySoftware.view;
 
 import funcionariosBlackMoneySoftware.model.FuncionarioBase;

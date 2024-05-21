@@ -1,4 +1,3 @@
-// MainController.java
 package funcionariosBlackMoneySoftware.controller;
 
 import funcionariosBlackMoneySoftware.model.CTO;
@@ -37,8 +36,9 @@ public class MainController {
             int opcaoInicial = menuView.mostrarMenuInicial();
             switch (opcaoInicial) {
                 case 1:
-                    if (login()) {
-                        FuncionarioBase funcionarioLogado = arvoreDeFuncionarios.buscar(menuView.solicitarLogin());
+                    String loginInserido = menuView.solicitarLogin();
+                    if (login(loginInserido)) {
+                        FuncionarioBase funcionarioLogado = arvoreDeFuncionarios.buscar(loginInserido);
                         if (funcionarioLogado instanceof CTO) {
                             menuCTO();
                         } else if (funcionarioLogado != null) {
@@ -59,9 +59,8 @@ public class MainController {
         }
     }
 
-    private boolean login() {
-        System.out.println("Login no sistema");
-        String login = menuView.solicitarLogin();
+    private boolean login(String login) {
+        System.out.println("Ben vindo ! insira sua senha ");
         String senha = menuView.solicitarSenha();
         return cto.autenticar(login, senha) || sistemaDeLogin.login(login, senha);
     }

@@ -1,4 +1,3 @@
-// Main.java
 package funcionariosBlackMoneySoftware;
 
 import funcionariosBlackMoneySoftware.controller.MainController;

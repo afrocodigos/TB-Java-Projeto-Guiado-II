@@ -1,4 +1,3 @@
-// SistemaDeLogin.java
 package funcionariosBlackMoneySoftware.controller;
 
 import java.util.HashMap;

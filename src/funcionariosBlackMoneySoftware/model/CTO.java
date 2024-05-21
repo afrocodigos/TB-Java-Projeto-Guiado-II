@@ -1,8 +1,7 @@
-// CTO.java
 package funcionariosBlackMoneySoftware.model;
 
 public class CTO extends FuncionarioBase {
-    private static final String NOME = "Lucas Teles";
+    private static final String NOME = "CTO";
     private static final String CARGO = "CTO";
     private static final String CPF = "123456";
     private static final String LOGIN = "rootCTO";
