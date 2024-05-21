@@ -1,6 +1,7 @@
 package funcionariosBlackMoneySoftware.model;
 
 import funcionariosBlackMoneySoftware.controller.FuncionarioInterface;
+import funcionariosBlackMoneySoftware.controller.ValidadorDaSenha;
 
 public class FuncionarioBase implements FuncionarioInterface {
     private String nome;
@@ -86,7 +87,14 @@ public class FuncionarioBase implements FuncionarioInterface {
     }
 
     public void atualizarSenha(String novaSenha) {
-        this.senha = novaSenha;
+        ValidadorDaSenha validador = new ValidadorDaSenha();
+        if (validador.verificarSenha(novaSenha)) {
+            this.senha = novaSenha;
+            System.out.println("Senha atualizada com sucesso.");
+        } else {
+            System.out.println("A senha não atende aos critérios de segurança. (8 a 16 caracteres, Maiuscula, minuscula e caractere especial)");
+        }
     }
+
 
 }
