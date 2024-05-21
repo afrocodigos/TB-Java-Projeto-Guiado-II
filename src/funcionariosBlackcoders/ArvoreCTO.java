@@ -1,0 +1,29 @@
+package funcionariosBlackcoders;
+
+public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
+    @Override
+    public void adicionar(CTO funcionario) {
+        super.adicionar(funcionario);
+        System.out.println("CTO adicionado com sucesso!");
+    }
+
+    @Override
+    public CTO buscar(String nome) {
+        return super.buscar(nome);
+    }
+
+    @Override
+    public void remover(String nome) {
+        super.remover(nome);
+    }
+
+    @Override
+    public void mostrarTodos() {
+        super.mostrarTodos();
+    }
+
+    @Override
+    public void atualizarDados(String nome, double novoSalario, String novoCargo) {
+        super.atualizarDados(nome, novoSalario, novoCargo);
+    }
+}
