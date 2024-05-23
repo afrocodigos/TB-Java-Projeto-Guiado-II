@@ -35,9 +35,9 @@ Estrutura das pastas do meu projeto.
 
 ## Exemplo de execução
 
-| Passo 1 - Login do CTO                         | Passo 2 - Add novo funcionário              |
-| ---------------------------------------------- | ------------------------------------------- |
-| ![Login CTO](https://i.ibb.co/5LxQK7L/1-1.png) | ![Add func](https://i.ibb.co/JKNSBxy/2.png) |
+| Passo 1 - Login do CTO                         | Passo 2 - Add novo funcionário                |
+| ---------------------------------------------- | --------------------------------------------- |
+| ![Login CTO](https://i.ibb.co/5LxQK7L/1-1.png) | ![Add func](https://i.ibb.co/D7TJCL9/1-2.png) |
 
 | Passo 3 - logout                          | Passo 4 - Login funcionário                          |
 | ----------------------------------------- | ---------------------------------------------------- |
