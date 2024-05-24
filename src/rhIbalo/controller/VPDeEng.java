@@ -1,6 +1,4 @@
 package rhIbalo.controller;
-
-
 import rhIbalo.model.FuncBase;
 
 public class VPDeEng extends FuncBase {
