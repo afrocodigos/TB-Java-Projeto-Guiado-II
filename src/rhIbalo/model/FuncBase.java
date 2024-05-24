@@ -1,12 +1,13 @@
-package funcionariosStarlabs;
+package rhIbalo.model;
 
-public abstract class FuncionarioBase implements FuncionarioBaseInterface {
+
+public abstract class FuncBase implements FuncionarioInterface {
     protected String nome;
     protected String cargo;
     protected double salario;
     protected String cpf;
 
-    public FuncionarioBase(String nome, String cargo, double salario, String cpf) {
+    public FuncBase(String nome, String cargo, double salario, String cpf) {
         this.nome = nome;
         this.cargo = cargo;
         this.salario = salario;

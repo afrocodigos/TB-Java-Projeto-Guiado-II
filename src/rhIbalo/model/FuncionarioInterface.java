@@ -1,6 +1,7 @@
-package funcionariosStarlabs;
+package rhIbalo.model;
 
-public interface FuncionarioBaseInterface {
+public interface FuncionarioInterface {
+
     String getNome();
     void setNome(String nome);
     String getCargo();

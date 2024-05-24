@@ -1,8 +1,9 @@
-package funcionariosStarlabs;
+package rhIbalo.controller;
+import rhIbalo.model.FuncBase;
 
-public class VPDeEngenharia extends FuncionarioBase {
-    
-    public VPDeEngenharia(String nome, String Cargo, double salario, String cpf) {
+public class VPDeEng extends FuncBase {
+
+    public VPDeEng(String nome, String Cargo, double salario, String cpf) {
         super(nome, Cargo, salario, cpf);
     }
 

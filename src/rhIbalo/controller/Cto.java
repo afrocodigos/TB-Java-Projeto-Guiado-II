@@ -1,8 +1,11 @@
-package funcionariosStarlabs;
+package rhIbalo.controller;
 
-public class CTO extends FuncionarioBase {
-    
-    public CTO(String nome, String cargo, double salario, String cpf) {
+
+import rhIbalo.model.FuncBase;
+
+public class Cto extends FuncBase {
+
+    public Cto(String nome, String cargo, double salario, String cpf) {
         super(nome, cargo, salario, cpf);
     }
 

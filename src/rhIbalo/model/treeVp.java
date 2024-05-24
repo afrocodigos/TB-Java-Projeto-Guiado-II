@@ -1,14 +1,15 @@
-package funcionariosStarlabs;
+package rhIbalo.model;
+import rhIbalo.controller.VPDeEng;
 
-public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
-    
+public class treeVp extends treesetFunc<VPDeEng> {
+
     @Override
-    public void adicionar(CTO funcionario) {
+    public void adicionar(VPDeEng funcionario) {
         super.adicionar(funcionario);
     }
 
     @Override
-    public CTO buscar(String nome) {
+    public VPDeEng buscar(String nome) {
         return super.buscar(nome);
     }
 
@@ -19,6 +20,7 @@ public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
 
     @Override
     public void mostrarTodos() {
+
         super.mostrarTodos();
     }
 
@@ -26,4 +28,5 @@ public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
         super.atualizarDados(nome, novoSalario, novoCargo);
     }
+
 }
