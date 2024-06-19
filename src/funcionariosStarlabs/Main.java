@@ -9,19 +9,20 @@ import src.funcionariosStarlabs.model.Nivel;
 import src.funcionariosStarlabs.model.Salario;
 import src.funcionariosStarlabs.service.ArvoreDeCargos;
 import src.funcionariosStarlabs.service.ArvoreDeFuncionarios;
+import src.funcionariosStarlabs.service.GerenciamentoFuncionarios;
 
 public class Main {
 
     private static final List<String> cargosDisponiveis = List.of(
-        "engenheiro",
-        "arquiteto",
-        "qa",
-        "gestor"
+        "ENGENHEIRO",
+        "ARQUITETO",
+        "QA",
+        "GESTOR"
     );
 
     public static void main(String[] args) {
-        ArvoreDeFuncionarios arvoreDeFuncionarios = new ArvoreDeFuncionarios();
-        ArvoreDeCargos arvoreDeCargos = new ArvoreDeCargos();
+        GerenciamentoFuncionarios arvoreDeFuncionarios = new ArvoreDeFuncionarios();
+        GerenciamentoFuncionarios arvoreDeCargos = new ArvoreDeCargos();
 
         adicionarFuncionariosDefault(arvoreDeFuncionarios, arvoreDeCargos);
 
@@ -29,20 +30,9 @@ public class Main {
             int opcao;
             do {
                 mostrarMenu();
-                opcao = scanner.nextInt();
-                scanner.nextLine();
+                opcao = obterOpcao(scanner);
 
-                switch (opcao) {
-                    case 1 -> adicionarFuncionario(arvoreDeFuncionarios, arvoreDeCargos, scanner);
-                    case 2 -> excluirFuncionario(arvoreDeFuncionarios, arvoreDeCargos, scanner);
-                    case 3 -> atualizarFuncionario(arvoreDeFuncionarios, scanner);
-                    case 4 -> visualizarFuncionarios(arvoreDeFuncionarios);
-                    case 5 -> filtrarPorCargo(arvoreDeCargos, scanner);
-                    case 6 -> buscarPorCPF(arvoreDeFuncionarios, scanner);
-                    case 7 -> filtrarPorNome(arvoreDeCargos, scanner);
-                    case 8 -> System.out.println("Encerrando o programa...");
-                    default -> System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
-                }
+                executarOpcao(arvoreDeFuncionarios, arvoreDeCargos, scanner, opcao);
             } while (opcao != 8);
         }
     }
@@ -63,97 +53,85 @@ public class Main {
         System.out.print("Escolha uma opção: ");
     }
 
-    private static void adicionarFuncionario(ArvoreDeFuncionarios arvoreDeFuncionarios, ArvoreDeCargos arvoreDeCargos, Scanner scanner) {
-        System.out.println("Digite o nome do funcionário:");
-        String nome = scanner.nextLine();
-        System.out.println("Digite o CPF do funcionário:");
-        String cpf = scanner.nextLine();
-
-        System.out.println("Selecione o cargo do funcionário:");
-        for (int i = 0; i < cargosDisponiveis.size(); i++) {
-            System.out.println((i + 1) + ". " + cargosDisponiveis.get(i));
+    private static int obterOpcao(Scanner scanner) {
+        while (true) {
+            try {
+                int opcao = Integer.parseInt(scanner.nextLine());
+                if (opcao >= 1 && opcao <= 8) {
+                    return opcao;
+                }
+                System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, insira um número.");
+            }
         }
-        int indiceCargo = scanner.nextInt();
-        scanner.nextLine();
-        String cargo = cargosDisponiveis.get(indiceCargo - 1);
+    }
 
-        System.out.println("Digite o nível do funcionário (1 para Estagiário, 2 para Junior, 3 para Pleno, 4 para Senior, 5 para Gestor):");
-        int nivel = scanner.nextInt();
-        scanner.nextLine();
+    private static void executarOpcao(GerenciamentoFuncionarios arvoreDeFuncionarios, GerenciamentoFuncionarios arvoreDeCargos, Scanner scanner, int opcao) {
+        switch (opcao) {
+            case 1 -> adicionarFuncionario(arvoreDeFuncionarios, arvoreDeCargos, scanner);
+            case 2 -> excluirFuncionario(arvoreDeFuncionarios, arvoreDeCargos, scanner);
+            case 3 -> atualizarFuncionario(arvoreDeFuncionarios, scanner);
+            case 4 -> visualizarFuncionarios(arvoreDeFuncionarios);
+            case 5 -> filtrarPorCargo(arvoreDeCargos, scanner);
+            case 6 -> buscarPorCPF(arvoreDeFuncionarios, scanner);
+            case 7 -> filtrarPorNome(arvoreDeCargos, scanner);
+            case 8 -> System.out.println("Encerrando o programa...");
+            default -> System.out.println("Opção inválida. Por favor, escolha uma opção válida.");
+        }
+    }
 
-        Funcionario novoFuncionario = new Funcionario(nome, new Cpf(cpf), new Cargo(cargo), new Nivel(nivel), new Salario());
+    private static void adicionarFuncionario(GerenciamentoFuncionarios arvoreDeFuncionarios, GerenciamentoFuncionarios arvoreDeCargos, Scanner scanner) {
+        String nome = obterEntrada(scanner, "Digite o nome do funcionário:");
+        String cpf = obterEntrada(scanner, "Digite o CPF do funcionário:");
+        String cargo = selecionarCargo(scanner);
+        String nivel = selecionarNivel(scanner);
+        double salario = obterSalario(scanner, "Digite o salário do funcionário:");
 
+        Funcionario novoFuncionario = new Funcionario(nome, new Cpf(cpf), Cargo.valueOf(cargo.toUpperCase()), Nivel.valueOf(nivel.toUpperCase()), new Salario(salario));
         arvoreDeFuncionarios.adicionarFuncionario(novoFuncionario);
         arvoreDeCargos.adicionarFuncionario(novoFuncionario);
-
         System.out.println("Funcionário adicionado com sucesso!");
     }
 
-    private static void excluirFuncionario(ArvoreDeFuncionarios arvoreDeFuncionarios, ArvoreDeCargos arvoreDeCargos, Scanner scanner) {
-        System.out.println("Digite o CPF do funcionário que deseja excluir:");
-        String cpf = scanner.nextLine();
+    private static void excluirFuncionario(GerenciamentoFuncionarios arvoreDeFuncionarios, GerenciamentoFuncionarios arvoreDeCargos, Scanner scanner) {
+        String cpf = obterEntrada(scanner, "Digite o CPF do funcionário que deseja excluir:");
 
         arvoreDeFuncionarios.removerFuncionario(cpf);
         arvoreDeCargos.removerFuncionario(cpf);
-
         System.out.println("Funcionário removido com sucesso!");
     }
 
-    private static void atualizarFuncionario(ArvoreDeFuncionarios arvoreDeFuncionarios, Scanner scanner) {
-        System.out.println("Digite o CPF do funcionário que deseja atualizar:");
-        String cpf = scanner.nextLine();
+    private static void atualizarFuncionario(GerenciamentoFuncionarios arvoreDeFuncionarios, Scanner scanner) {
+        String cpf = obterEntrada(scanner, "Digite o CPF do funcionário que deseja atualizar:");
 
         Funcionario funcionario = arvoreDeFuncionarios.buscarFuncionario(cpf);
-
         if (funcionario != null) {
-            System.out.println("Digite o novo nome do funcionário:");
-            String novoNome = scanner.nextLine();
-
-            System.out.println("Selecione o novo cargo do funcionário:");
-            for (int i = 0; i < cargosDisponiveis.size(); i++) {
-                System.out.println((i + 1) + ". " + cargosDisponiveis.get(i));
-            }
-            int indiceCargo = scanner.nextInt();
-            scanner.nextLine();
-            String novoCargo = cargosDisponiveis.get(indiceCargo - 1);
-
-            System.out.println("Digite o novo nível do funcionário (1 para Estagiário, 2 para Junior, 3 para Pleno, 4 para Senior, 5 para Gestor):");
-            int novoNivel = scanner.nextInt();
-            scanner.nextLine();
-
+            String novoNome = obterEntrada(scanner, "Digite o novo nome do funcionário:");
             funcionario.setNome(novoNome);
-            funcionario.setCargo(new Cargo(novoCargo));
-            funcionario.setNivel(new Nivel(novoNivel));
+
+            double novoSalario = obterSalario(scanner, "Digite o novo salário do funcionário:");
+            funcionario.getSalario().setValor(novoSalario);
 
             arvoreDeFuncionarios.atualizarFuncionario(funcionario);
-
             System.out.println("Funcionário atualizado com sucesso!");
         } else {
             System.out.println("Funcionário não encontrado.");
         }
     }
 
-    private static void visualizarFuncionarios(ArvoreDeFuncionarios arvoreDeFuncionarios) {
-        if (arvoreDeFuncionarios.estaVazia()) {
-            System.out.println("Nenhum funcionário cadastrado.");
-        } else {
-            System.out.println("Lista de funcionários:");
-            arvoreDeFuncionarios.listarFuncionarios();
-        }
+    private static void visualizarFuncionarios(GerenciamentoFuncionarios arvoreDeFuncionarios) {
+        System.out.println("Lista de Funcionários:");
+        arvoreDeFuncionarios.mostrarDadosOrdenados();
     }
 
-    private static void filtrarPorCargo(ArvoreDeCargos arvoreDeCargos, Scanner scanner) {
-        System.out.println("Digite o cargo para filtrar:");
-        String cargo = scanner.nextLine();
-
-        System.out.println("Funcionários com o cargo '" + cargo +  "':");
-        arvoreDeCargos.buscarFuncionariosPorCargo(cargo).forEach(System.out::println);
+    private static void filtrarPorCargo(GerenciamentoFuncionarios arvoreDeCargos, Scanner scanner) {
+        String cargo = selecionarCargo(scanner);
+        arvoreDeCargos.filtrarPorCargo(Cargo.valueOf(cargo.toUpperCase()));
     }
 
-    private static void buscarPorCPF(ArvoreDeFuncionarios arvoreDeFuncionarios, Scanner scanner) {
-        System.out.println("Digite o CPF do funcionário para buscar:");
-        String cpf = scanner.nextLine();
-
+    private static void buscarPorCPF(GerenciamentoFuncionarios arvoreDeFuncionarios, Scanner scanner) {
+        String cpf = obterEntrada(scanner, "Digite o CPF do funcionário que deseja buscar:");
         Funcionario funcionario = arvoreDeFuncionarios.buscarFuncionario(cpf);
 
         if (funcionario != null) {
@@ -164,25 +142,60 @@ public class Main {
         }
     }
 
-    private static void filtrarPorNome(ArvoreDeCargos arvoreDeCargos, Scanner scanner) {
-        System.out.println("Digite o nome para filtrar:");
-        String nome = scanner.nextLine();
-
-        System.out.println("Funcionários com o nome '" + nome + "':");
-        arvoreDeCargos.buscarFuncionariosPorNome(nome).forEach(System.out::println);
+    private static void filtrarPorNome(GerenciamentoFuncionarios arvoreDeCargos, Scanner scanner) {
+        String nome = obterEntrada(scanner, "Digite o nome do funcionário que deseja buscar:");
+        arvoreDeCargos.filtrarPorNome(nome);
     }
 
-    private static void adicionarFuncionariosDefault(ArvoreDeFuncionarios arvoreDeFuncionarios, ArvoreDeCargos arvoreDeCargos) {
-
-        Funcionario funcionario1 = new Funcionario("João", new Cpf("12345678901"), new Cargo("qa"), new Nivel(1), new Salario());
-        Funcionario funcionario2 = new Funcionario("Maria", new Cpf("98765432109"), new Cargo("engenheiro"), new Nivel(2), new Salario());
-
-        arvoreDeFuncionarios.adicionarFuncionario(funcionario1);
-        arvoreDeFuncionarios.adicionarFuncionario(funcionario2);
-
-        arvoreDeCargos.adicionarFuncionario(funcionario1);
-        arvoreDeCargos.adicionarFuncionario(funcionario2);
+    private static String obterEntrada(Scanner scanner, String mensagem) {
+        System.out.println(mensagem);
+        return scanner.nextLine();
     }
 
-}
+    private static String selecionarCargo(Scanner scanner) {
+        System.out.println("Selecione o cargo do funcionário:");
+        for (int i = 0; i < cargosDisponiveis.size(); i++) {
+            System.out.println((i + 1) + " - " + cargosDisponiveis.get(i));
+        }
+        int cargoEscolhido = scanner.nextInt();
+        scanner.nextLine();  // Consome a nova linha
+        return cargosDisponiveis.get(cargoEscolhido - 1);
+    }
 
+    private static String selecionarNivel(Scanner scanner) {
+        System.out.println("Selecione o nível do funcionário (1 para Estagiário, 2 para Júnior, 3 para Pleno, 4 para Sênior, 5 para Gestor):");
+        int nivelEscolhido = scanner.nextInt();
+        scanner.nextLine();  // Consome a nova linha
+        return switch (nivelEscolhido) {
+            case 1 -> "Estagiário";
+            case 2 -> "Júnior";
+            case 3 -> "Pleno";
+            case 4 -> "Sênior";
+            case 5 -> "Gestor";
+            default -> "Júnior"; // Nível padrão em caso de valor inválido
+        };
+    }
+
+    private static double obterSalario(Scanner scanner, String mensagem) {
+        while (true) {
+            try {
+                System.out.println(mensagem);
+                return Double.parseDouble(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada inválida. Por favor, insira um valor numérico.");
+            }
+        }
+    }
+
+    private static void adicionarFuncionariosDefault(GerenciamentoFuncionarios arvoreDeFuncionarios, GerenciamentoFuncionarios arvoreDeCargos) {
+        arvoreDeFuncionarios.adicionarFuncionario(new Funcionario("Alice", new Cpf("12345678900"), Cargo.ENGENHEIRO, Nivel.SENIOR, new Salario(10000)));
+        arvoreDeFuncionarios.adicionarFuncionario(new Funcionario("Bob", new Cpf("98765432100"), Cargo.QA, Nivel.PLENO, new Salario(8000)));
+        arvoreDeFuncionarios.adicionarFuncionario(new Funcionario("Carol", new Cpf("45678912300"), Cargo.ARQUITETO, Nivel.JUNIOR, new Salario(9000)));
+        arvoreDeFuncionarios.adicionarFuncionario(new Funcionario("David", new Cpf("78912345600"), Cargo.GESTOR, Nivel.SENIOR, new Salario(12000)));
+    
+        arvoreDeCargos.adicionarFuncionario(new Funcionario("Alice", new Cpf("12345678900"), Cargo.ENGENHEIRO, Nivel.SENIOR, new Salario(10000)));
+        arvoreDeCargos.adicionarFuncionario(new Funcionario("Bob", new Cpf("98765432100"), Cargo.QA, Nivel.PLENO, new Salario(8000)));
+        arvoreDeCargos.adicionarFuncionario(new Funcionario("Carol", new Cpf("45678912300"), Cargo.ARQUITETO, Nivel.JUNIOR, new Salario(9000)));
+        arvoreDeCargos.adicionarFuncionario(new Funcionario("David", new Cpf("78912345600"), Cargo.GESTOR, Nivel.SENIOR, new Salario(12000)));
+    }
+}    

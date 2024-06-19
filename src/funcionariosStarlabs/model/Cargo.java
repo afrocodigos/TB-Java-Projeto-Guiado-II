@@ -1,22 +1,15 @@
 package src.funcionariosStarlabs.model;
 
-import java.util.Arrays;
+public enum Cargo {
+    ENGENHEIRO("Engenheiro"),
+    ARQUITETO("Arquiteto"),
+    QA("QA"),
+    GESTOR("Gestor");
 
-public class Cargo {
-    private String cargo;
-    private final  String[] CARGOS_VALIDOS = {
-        "engenheiro",
-        "arquiteto",
-        "qa",
-        "gestor"
-    };
+    private final String cargo;
 
-    public Cargo(String cargo) {
-        if (Arrays.asList(CARGOS_VALIDOS).contains(cargo)) {
-            this.cargo = cargo;
-        } else {
-            throw new IllegalArgumentException("Cargo inválido: " + cargo);
-        }
+    Cargo(String cargo) {
+        this.cargo = cargo;
     }
 
     public String getCargo() {

@@ -15,6 +15,8 @@ public class Funcionario {
         this.salario = salario;
     }
 
+    // Getters e setters
+
     public String getNome() {
         return nome;
     }
@@ -49,13 +51,20 @@ public class Funcionario {
 
     public Salario getSalario() {
         return salario;
-    } 
-    
+    }
+
     public void setSalario(Salario salario) {
         this.salario = salario;
     }
 
-    public String getNivelAsString() {
-        return nivel.getNivelAsString();
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "nome='" + nome + '\'' +
+                ", cpf=" + cpf.getValor() +
+                ", cargo=" + cargo +
+                ", nivel=" + nivel +
+                ", salario=" + salario.getValor() +
+                '}';
     }
 }

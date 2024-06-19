@@ -5,9 +5,20 @@ import java.util.Map;
 
 public class Salario {
     private static final Map<String, Double> SALARIOS = new HashMap<>();
-    
+    private double valor;
+
+    public Salario(double valor) {
+        this.valor = valor;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
     static {
-        // Definindo os salários para cada nível
         SALARIOS.put("GESTOR", 50000.00);
         SALARIOS.put("SENIOR", 38600.00);
         SALARIOS.put("PLENO", 27570.09);

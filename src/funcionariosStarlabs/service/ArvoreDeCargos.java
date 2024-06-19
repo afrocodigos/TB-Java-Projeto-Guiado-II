@@ -1,68 +1,49 @@
 package src.funcionariosStarlabs.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 import src.funcionariosStarlabs.model.Funcionario;
-import src.funcionariosStarlabs.model.NodeFuncionario;
+import src.funcionariosStarlabs.model.Cargo;
 
-public class ArvoreDeCargos {
-    private List<Funcionario> funcionarios;
+public class ArvoreDeCargos implements GerenciamentoFuncionarios {
+    private Map<String, Funcionario> cargos = new HashMap<>();
 
-    public ArvoreDeCargos() {
-        this.funcionarios = new ArrayList<>();
-    }
-
+    @Override
     public void adicionarFuncionario(Funcionario funcionario) {
-        funcionarios.add(funcionario);
+        cargos.put(funcionario.getCpf().getValor(), funcionario);
     }
 
+    @Override
     public void removerFuncionario(String cpf) {
-        funcionarios = funcionarios.stream()
-                .filter(funcionario -> !funcionario.getCpf().getCpf().equals(cpf))
-                .collect(Collectors.toList());
-    }
-    
-
-    public List<Funcionario> buscarFuncionariosPorCargo(String cargo) {
-        return funcionarios.stream()
-                .filter(funcionario -> funcionario.getCargo().getCargo().equals(cargo))
-                .collect(Collectors.toList());
+        cargos.remove(cpf);
     }
 
-
-    public List<Funcionario> buscarFuncionariosPorNome(String nome) {
-        return funcionarios.stream()
-                .filter(funcionario -> funcionario.getNome().contains(nome))
-                .collect(Collectors.toList());
+    @Override
+    public Funcionario buscarFuncionario(String cpf) {
+        return cargos.get(cpf);
     }
 
-    private NodeFuncionario root; // Declare and initialize the root variable
+    @Override
+    public void atualizarFuncionario(Funcionario funcionario) {
+        cargos.put(funcionario.getCpf().getValor(), funcionario);
+    }
 
+    @Override
+    public void mostrarDadosOrdenados() {
+        cargos.values().forEach(System.out::println);
+    }
+
+    @Override
+    public void filtrarPorCargo(Cargo cargo) {
+        cargos.values().stream()
+            .filter(funcionario -> funcionario.getCargo().equals(cargo))
+            .forEach(System.out::println);
+    }
+
+    @Override
     public void filtrarPorNome(String nome) {
-        List<Funcionario> funcionariosFiltrados = new ArrayList<>();
-        filtrarPorNomeRecursivo(root, nome, funcionariosFiltrados);
-        
-        if (funcionariosFiltrados.isEmpty()) {
-            System.out.println("Nenhum funcionário encontrado com o nome fornecido.");
-        } else {
-            System.out.println("-------------------------------------------");
-            System.out.println("Funcionários encontrados com o nome '" + nome + "':");
-            for (Funcionario funcionario : funcionariosFiltrados) {
-                System.out.println(funcionario);
-            }
-            System.out.println("-------------------------------------------");
-        }
+        cargos.values().stream()
+            .filter(funcionario -> funcionario.getNome().contains(nome))
+            .forEach(System.out::println);
     }
-
-    private void filtrarPorNomeRecursivo(NodeFuncionario node, String nome, List<Funcionario> funcionariosFiltrados) {
-        if (node != null) {
-            filtrarPorNomeRecursivo(node.getLeftChild(), nome, funcionariosFiltrados);
-            if (node.getFuncionario().getNome().toLowerCase().contains(nome.toLowerCase())) {
-                funcionariosFiltrados.add(node.getFuncionario());
-            }
-            filtrarPorNomeRecursivo(node.getRightChild(), nome, funcionariosFiltrados);
-        }
-    }
-
 }
