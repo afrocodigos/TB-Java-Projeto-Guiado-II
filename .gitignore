@@ -1,0 +1,23 @@
+# Arquivos de compilação
+*.class
+
+# Arquivos gerados pelo IDE
+.idea/
+target/
+
+# Arquivos de configuração
+*.iml
+*.ipr
+*.iws
+
+# Logs
+*.log
+
+# Arquivos temporários
+*.tmp
+*.swp
+*~
+
+# Arquivos de dependências
+/lib/
+.fake
