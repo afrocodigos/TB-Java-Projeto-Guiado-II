@@ -1,7 +1,7 @@
-package funcionariosStarlabs;
+package funcionariosEvilCorp.modelo;
 
-public class CTO extends FuncionarioBase {
-    
+public class CTO extends Funcionario {
+
     public CTO(String nome, String cargo, double salario, String cpf) {
         super(nome, cargo, salario, cpf);
     }

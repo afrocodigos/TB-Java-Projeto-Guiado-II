@@ -1,7 +1,8 @@
-package funcionariosStarlabs;
+package funcionariosEvilCorp.gerenciamentoCargos;
 
-public class ArvoreCTO extends ArvoreDeFuncionarios<CTO> {
-    
+import funcionariosEvilCorp.modelo.*;
+
+public class CTOArvore extends ArvoreFuncionario<CTO> {
     @Override
     public void adicionar(CTO funcionario) {
         super.adicionar(funcionario);

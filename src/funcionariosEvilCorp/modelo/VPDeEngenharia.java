@@ -1,7 +1,7 @@
-package funcionariosStarlabs;
+package funcionariosEvilCorp.modelo;
 
-public class VPDeEngenharia extends FuncionarioBase {
-    
+public class VPDeEngenharia extends Funcionario {
+
     public VPDeEngenharia(String nome, String Cargo, double salario, String cpf) {
         super(nome, Cargo, salario, cpf);
     }

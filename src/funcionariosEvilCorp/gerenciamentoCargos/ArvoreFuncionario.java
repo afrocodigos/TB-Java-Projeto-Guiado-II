@@ -1,11 +1,12 @@
-package funcionariosStarlabs;
+package funcionariosEvilCorp.gerenciamentoCargos;
+
 import java.util.TreeSet;
+import funcionariosEvilCorp.modelo.*;
 
-public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
-
+public class ArvoreFuncionario<T extends Funcionario> {
     private TreeSet<T> funcionarios;
 
-    public ArvoreDeFuncionarios() {
+    public ArvoreFuncionario() {
         funcionarios = new TreeSet<>((f1, f2) -> f1.getNome().compareTo(f2.getNome()));
     }
 
@@ -15,7 +16,7 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     }
 
     public T buscar(String nome) {
-        
+
         for (T funcionarioBase : funcionarios) {
             if (funcionarioBase.getNome().equals(nome)) {
                 return funcionarioBase; // retorno o funcionário encontrado
@@ -38,7 +39,8 @@ public class ArvoreDeFuncionarios<T extends FuncionarioBase> {
     public void mostrarTodos() {
         System.out.println("\n=== Todos os Funcionário ===");
         for (T funcionarioBase : funcionarios) {
-            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - " + funcionarioBase.getSalario());
+            System.out.println(funcionarioBase.getNome() + " - " + funcionarioBase.getCargo() + " - "
+                    + funcionarioBase.getSalario());
         }
     }
 

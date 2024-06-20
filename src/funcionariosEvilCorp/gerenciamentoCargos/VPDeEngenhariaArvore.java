@@ -1,7 +1,8 @@
-package funcionariosStarlabs;
+package funcionariosEvilCorp.gerenciamentoCargos;
 
-public class ArvoreVPDeEngenharia extends ArvoreDeFuncionarios<VPDeEngenharia> {
-    
+import funcionariosEvilCorp.modelo.*;
+
+public class VPDeEngenhariaArvore extends ArvoreFuncionario<VPDeEngenharia> {
     @Override
     public void adicionar(VPDeEngenharia funcionario) {
         super.adicionar(funcionario);
@@ -26,5 +27,4 @@ public class ArvoreVPDeEngenharia extends ArvoreDeFuncionarios<VPDeEngenharia> {
     public void atualizarDados(String nome, double novoSalario, String novoCargo) {
         super.atualizarDados(nome, novoSalario, novoCargo);
     }
-
 }
